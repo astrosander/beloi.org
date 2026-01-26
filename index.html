@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BelOI — Belarus Olympiad in Informatics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e3a8a;
+            --primary-dark: #1e40af;
+            --secondary: #059669;
+            --text: #111827;
+            --text-light: #4b5563;
+            --bg: #ffffff;
+            --bg-light: #f8fafc;
+            --border: #d1d5db;
+            --shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.5;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero .subheadline {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-secondary-dark {
+            background: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
+        }
+
+        .btn-secondary-dark:hover {
+            background: var(--primary-dark);
+            opacity: 1;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 30px 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--text);
+        }
+
+        /* Training Tracks */
+        .training-tracks {
+            background: var(--bg-light);
+        }
+
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .track-card {
+            background: white;
+            border-radius: 4px;
+            padding: 1.25rem;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.2s;
+            border: 1px solid var(--border);
+        }
+
+        .track-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .track-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.3rem;
+            color: var(--primary);
+        }
+
+        .track-card .topic {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .track-card .description {
+            color: var(--text);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        /* Contest Module */
+        .contest-module {
+            background: white;
+            border-radius: 4px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            margin: 0.75rem 0;
+        }
+
+        .contest-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .contest-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .contest-status {
+            padding: 6px 14px;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .status-upcoming {
+            background: #dbeafe;
+            color: var(--primary);
+        }
+
+        .status-open {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .contest-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+        }
+
+        .contest-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        /* Judge Status */
+        .judge-status {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-radius: 4px;
+            padding: 1.25rem;
+            margin: 0.75rem 0;
+        }
+
+        .judge-status h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.5rem;
+            color: #92400e;
+        }
+
+        .judge-status p {
+            color: #78350f;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .judge-badge {
+            display: inline-block;
+            background: #fbbf24;
+            color: #78350f;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Archive */
+        .archive {
+            background: var(--bg-light);
+        }
+
+        .archive-list {
+            display: grid;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .archive-item {
+            background: white;
+            border-radius: 4px;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: box-shadow 0.2s;
+        }
+
+        .archive-item:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .archive-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .archive-item-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .archive-item-date {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .archive-tags {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .tag-topic {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+
+        .tag-difficulty {
+            background: #fce7f3;
+            color: #831843;
+        }
+
+        /* Proof Tiles */
+        .proof-tiles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .proof-tile {
+            background: white;
+            border-radius: 4px;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .proof-tile-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .proof-tile-label {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .proof-tile-updated {
+            margin-top: 0.4rem;
+            font-size: 0.7rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text);
+            color: white;
+            padding: 1.5rem 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.85;
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 30px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subheadline {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 20px 20px;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .contest-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>BelOI — Belarus Olympiad in Informatics</h1>
+            <p class="subheadline">Practice, submit code, get judged, learn from feedback.</p>
+            <div class="cta-group">
+                <a href="#training" class="btn btn-primary">Start training</a>
+                <a href="#contests" class="btn btn-secondary">Submit to a contest</a>
+                <a href="#archive" class="btn btn-secondary">View standings</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Tracks -->
+    <section id="training" class="section training-tracks">
+        <div class="container">
+            <h2 class="section-title">Training Tracks</h2>
+            <div class="tracks-grid">
+                <div class="track-card">
+                    <h3>Intro to OI</h3>
+                    <p class="topic">Implementation</p>
+                    <p class="description">Master the fundamentals of competitive programming with hands-on implementation practice. Build a solid foundation in problem-solving and coding skills.</p>
+                </div>
+                <div class="track-card">
+                    <h3>Algorithms Core</h3>
+                    <p class="topic">Graphs, DP, Greedy</p>
+                    <p class="description">Dive deep into essential algorithmic techniques. Learn graph algorithms, dynamic programming, and greedy strategies that form the backbone of competitive programming.</p>
+                </div>
+                <div class="track-card">
+                    <h3>Advanced</h3>
+                    <p class="topic">Data Structures, Math</p>
+                    <p class="description">Tackle advanced topics with complex data structures and mathematical problem-solving. Prepare for the most challenging olympiad problems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contest Module -->
+    <section id="contests" class="section">
+        <div class="container">
+            <h2 class="section-title">Contests</h2>
+            <div class="contest-module">
+                <div class="contest-header">
+                    <h3 class="contest-title">Open Training Contest</h3>
+                    <span class="contest-status status-open">Open</span>
+                </div>
+                <div class="contest-stats">
+                    <div class="stat">
+                        <div class="stat-value">127</div>
+                        <div class="stat-label">Registrations</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">342</div>
+                        <div class="stat-label">Submissions</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">89</div>
+                        <div class="stat-label">Participants</div>
+                    </div>
+                </div>
+                <div class="contest-actions">
+                    <a href="#register" class="btn btn-primary">Register</a>
+                    <a href="#standings" class="btn btn-secondary-dark">View Results</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Judge Status -->
+    <section class="section">
+        <div class="container">
+            <div class="judge-status">
+                <span class="judge-badge">Pilot Judge</span>
+                <h3>Judge Status</h3>
+                <p>We're currently running a pilot judge system with manual/limited test coverage. The full automated judging infrastructure is under active development. You can still submit solutions, view results, and access the complete archive of past contests and submissions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Archive -->
+    <section id="archive" class="section archive">
+        <div class="container">
+            <h2 class="section-title">Archive</h2>
+            <div class="archive-list">
+                <div class="archive-item">
+                    <div class="archive-item-header">
+                        <div>
+                            <div class="archive-item-title">BelOI Winter Contest 2024</div>
+                            <div class="archive-item-date">January 15, 2024</div>
+                        </div>
+                    </div>
+                    <div class="archive-tags">
+                        <span class="tag tag-topic">Graphs</span>
+                        <span class="tag tag-topic">DP</span>
+                        <span class="tag tag-difficulty">Medium</span>
+                    </div>
+                </div>
+                <div class="archive-item">
+                    <div class="archive-item-header">
+                        <div>
+                            <div class="archive-item-title">BelOI Autumn Contest 2023</div>
+                            <div class="archive-item-date">October 22, 2023</div>
+                        </div>
+                    </div>
+                    <div class="archive-tags">
+                        <span class="tag tag-topic">Greedy</span>
+                        <span class="tag tag-topic">Math</span>
+                        <span class="tag tag-difficulty">Hard</span>
+                    </div>
+                </div>
+                <div class="archive-item">
+                    <div class="archive-item-header">
+                        <div>
+                            <div class="archive-item-title">BelOI Summer Training 2023</div>
+                            <div class="archive-item-date">July 8, 2023</div>
+                        </div>
+                    </div>
+                    <div class="archive-tags">
+                        <span class="tag tag-topic">Implementation</span>
+                        <span class="tag tag-topic">Data Structures</span>
+                        <span class="tag tag-difficulty">Easy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof Tiles -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Infrastructure Stats</h2>
+            <div class="proof-tiles">
+                <div class="proof-tile">
+                    <div class="proof-tile-value">156</div>
+                    <div class="proof-tile-label">Tasks</div>
+                    <div class="proof-tile-updated">Last updated: 2 days ago</div>
+                </div>
+                <div class="proof-tile">
+                    <div class="proof-tile-value">892</div>
+                    <div class="proof-tile-label">Test Datasets</div>
+                    <div class="proof-tile-updated">Last updated: 1 week ago</div>
+                </div>
+                <div class="proof-tile">
+                    <div class="proof-tile-value">2,341</div>
+                    <div class="proof-tile-label">Submissions Processed</div>
+                    <div class="proof-tile-updated">Last updated: 1 hour ago</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p><strong>BelOI</strong> — Belarus Olympiad in Informatics</p>
+            <p>Building Belarus's olympiad informatics infrastructure</p>
+        </div>
+    </footer>
+</body>
+</html>
+
