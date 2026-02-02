@@ -12,9 +12,14 @@
         }
 
         :root {
-            --primary: #1e3a8a;
-            --primary-dark: #1e40af;
-            --secondary: #059669;
+            --primary: #C026D3;
+            --primary-dark: #A21CAF;
+            --primary-tint: #FDF4FF;
+            --primary-tint-strong: #FAE8FF;
+            --support: #BE123C;
+            --support-tint: #FFE4E6;
+            --accent: #B45309;
+            --accent-tint: #FEF3C7;
             --text: #111827;
             --text-light: #4b5563;
             --bg: #ffffff;
@@ -40,9 +45,27 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background-color: var(--primary-dark);
             color: white;
             padding: 30px 20px;
             text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.15);
+            pointer-events: none;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
@@ -123,7 +146,7 @@
 
         /* Training Tracks */
         .training-tracks {
-            background: var(--bg-light);
+            background: var(--primary-tint);
         }
 
         .tracks-grid {
@@ -197,13 +220,13 @@
         }
 
         .status-upcoming {
-            background: #dbeafe;
+            background: var(--primary-tint-strong);
             color: var(--primary);
         }
 
         .status-open {
-            background: #d1fae5;
-            color: #065f46;
+            background: var(--support-tint);
+            color: var(--support);
         }
 
         .contest-stats {
@@ -237,8 +260,8 @@
 
         /* Judge Status */
         .judge-status {
-            background: #fef3c7;
-            border: 1px solid #fbbf24;
+            background: var(--accent-tint);
+            border: 1px solid var(--accent);
             border-radius: 4px;
             padding: 1.25rem;
             margin: 0.75rem 0;
@@ -247,19 +270,19 @@
         .judge-status h3 {
             font-size: 1.35rem;
             margin-bottom: 0.5rem;
-            color: #92400e;
+            color: var(--accent);
         }
 
         .judge-status p {
-            color: #78350f;
+            color: var(--accent);
             line-height: 1.5;
             font-size: 0.95rem;
         }
 
         .judge-badge {
             display: inline-block;
-            background: #fbbf24;
-            color: #78350f;
+            background: var(--accent);
+            color: white;
             padding: 5px 10px;
             border-radius: 3px;
             font-size: 0.85rem;
@@ -269,7 +292,7 @@
 
         /* Archive */
         .archive {
-            background: var(--bg-light);
+            background: var(--primary-tint);
         }
 
         .archive-list {
@@ -325,13 +348,13 @@
         }
 
         .tag-topic {
-            background: #e0e7ff;
-            color: #3730a3;
+            background: var(--primary-tint-strong);
+            color: var(--primary);
         }
 
         .tag-difficulty {
-            background: #fce7f3;
-            color: #831843;
+            background: var(--support-tint);
+            color: var(--support);
         }
 
         /* Proof Tiles */
