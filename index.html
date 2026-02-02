@@ -65,7 +65,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1500px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -117,8 +117,15 @@
         }
 
         .hero-text-container {
-            flex: 0 0 80%;
+            flex: 0 0 60%;
             text-align: left;
+        }
+
+        .hero-belso-container {
+            flex: 0 0 19%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero h1 {
@@ -501,6 +508,11 @@
                 text-align: center;
             }
 
+            .hero-belso-container {
+                flex: 0 0 auto;
+                width: 100%;
+            }
+
             .hero h1 {
                 font-size: 2rem;
                 margin-bottom: 8px;
@@ -535,6 +547,75 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
+            .belso-section {
+                max-width: 100%;
+                padding: 6px 10px;
+                gap: 6px;
+                border-radius: 8px;
+                margin: 16px 0 0 0;
+                align-self: center;
+                width: 100%;
+            }
+
+            .belso-section a.belso-link {
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .belso-logo {
+                max-height: 40px;
+                width: auto;
+                flex-shrink: 0;
+            }
+        }
+
+        /* BelSO Section */
+        .belso-section {
+            width: 100%;
+            max-width: 100%;
+            padding: 6px 10px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .belso-section a.belso-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            width: 100%;
+            gap: 4px;
+        }
+
+        .belso-section a.belso-link:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .belso-logo {
+            height: auto;
+            width: 100%;
+            max-height: 100px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
     </style>
 </head>
@@ -553,6 +634,13 @@
                         <a href="#training" class="btn btn-primary">Start training</a>
                         <a href="#contests" class="btn btn-secondary">Submit to a contest</a>
                         <a href="#archive" class="btn btn-secondary">View standings</a>
+                    </div>
+                </div>
+                <div class="hero-belso-container">
+                    <div class="belso-section">
+                        <a href="https://belso.org/" target="_blank" rel="noopener noreferrer" class="belso-link">
+                            <img src="https://belso.org/img/logo.svg" alt="BelSO" class="belso-logo">
+                        </a>
                     </div>
                 </div>
             </div>
