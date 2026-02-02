@@ -4,6 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BelOI — Belarus Olympiad in Informatics</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="BelOI — Belarus Olympiad in Informatics">
+    <meta property="og:description" content="BelOI builds Belarus's olympiad informatics infrastructure — a national-grade system for training and running contests with submissions, judging, and transparent results archives.">
+    <meta property="og:image" content="img/logo.png">
+    <meta property="og:url" content="https://beloi.org">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="BelOI — Belarus Olympiad in Informatics">
+    <meta name="twitter:description" content="BelOI builds Belarus's olympiad informatics infrastructure — a national-grade system for training and running contests with submissions, judging, and transparent results archives.">
+    <meta name="twitter:image" content="img/logo.png">
+    
+    <!-- Meta Description -->
+    <meta name="description" content="BelOI builds Belarus's olympiad informatics infrastructure — a national-grade system for training and running contests with submissions, judging, and transparent results archives.">
     <style>
         * {
             margin: 0;
@@ -50,7 +71,6 @@
             background-color: var(--primary-dark);
             color: white;
             padding: 30px 20px;
-            text-align: center;
             position: relative;
         }
 
@@ -65,9 +85,35 @@
             pointer-events: none;
         }
 
-        .hero > * {
+        .hero .container {
             position: relative;
             z-index: 1;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .hero-logo-container {
+            flex: 0 0 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-logo {
+            max-width: 100%;
+            height: auto;
+            width: 100%;
+            display: block;
+            filter: brightness(0) invert(1);
+        }
+
+        .hero-text-container {
+            flex: 0 0 80%;
+            text-align: left;
         }
 
         .hero h1 {
@@ -77,6 +123,7 @@
             letter-spacing: -0.01em;
             color: #ffffff;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
         }
 
         .hero .subheadline {
@@ -86,13 +133,15 @@
             font-weight: 400;
             color: #f5f5f5;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            line-height: 1.6;
         }
 
         .cta-group {
             display: flex;
             gap: 0.75rem;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: wrap;
+            margin-top: 12px;
         }
 
         .btn {
@@ -104,7 +153,9 @@
             cursor: pointer;
             transition: opacity 0.2s;
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -420,12 +471,50 @@
                 padding: 30px 20px;
             }
 
+            .hero {
+                padding: 20px 20px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .hero-logo-container {
+                flex: 0 0 auto;
+                width: 100%;
+            }
+
+            .hero-logo {
+                max-width: 150px;
+                margin: 0 auto;
+            }
+
+            .hero-text-container {
+                flex: 0 0 auto;
+                width: 100%;
+                text-align: center;
+            }
+
             .hero h1 {
                 font-size: 2rem;
+                margin-bottom: 8px;
             }
 
             .hero .subheadline {
                 font-size: 1.1rem;
+                margin-bottom: 16px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .cta-group .btn {
+                width: 100%;
+                justify-content: center;
             }
 
             .section {
@@ -448,12 +537,19 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>BelOI — Belarus Olympiad in Informatics</h1>
-            <p class="subheadline">Practice, submit code, get judged, learn from feedback.</p>
-            <div class="cta-group">
-                <a href="#training" class="btn btn-primary">Start training</a>
-                <a href="#contests" class="btn btn-secondary">Submit to a contest</a>
-                <a href="#archive" class="btn btn-secondary">View standings</a>
+            <div class="hero-content">
+                <div class="hero-logo-container">
+                    <img src="img/logo_contrast.svg" alt="BelOI Logo" class="hero-logo" onerror="this.onerror=null; this.src='img/logo.png';">
+                </div>
+                <div class="hero-text-container">
+                    <h1>BelOI — Belarus Olympiad in Informatics</h1>
+                    <p class="subheadline">Practice, submit code, get judged, learn from feedback.</p>
+                    <div class="cta-group">
+                        <a href="#training" class="btn btn-primary">Start training</a>
+                        <a href="#contests" class="btn btn-secondary">Submit to a contest</a>
+                        <a href="#archive" class="btn btn-secondary">View standings</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
